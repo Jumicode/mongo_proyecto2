@@ -21,7 +21,7 @@ async function updateDocuments() {
     // Actualizar la sinopsis de "The Hobbit: An Unexpected Journey"
     await collection.updateOne(
       { titulo: "The Hobbit: An Unexpected Journey" },
-      { $set: { sinopsis: "Un hobbit renuente, Bilbo Baggins, se embarca en un viaje hacia la Montaña Solitaria con un grupo animado de enanos para reclamar su hogar y el tesoro que contiene, todo ello custodiado por el dragón Smaug." } }
+      { $set: { sinopsis: "Un hobbit renuente, Bilbo Baggins, se embarca en un viaje hacia la Montaña Solitaria con un grupo animado de enanos para reclamar su hogar y el tesoro que contiene, todo ello custodiado por el dragon  Smaug." } }
     );
     console.log("Sinopsis agregada a The Hobbit: An Unexpected Journey");
 

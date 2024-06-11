@@ -18,29 +18,47 @@ async function textSearchQueries() {
     const db = client.db('Club_Video');
     const collection = db.collection('movies');
 
-    // Crear un índice de texto en el campo `synopsis`
+    // Crear un índice de texto en el campo 'synopsis'
     await collection.createIndex({ sinopsis: "text" });
     console.log("Índice de texto creado en el campo synopsis");
 
-    // Buscar películas cuya sinopsis contenga la palabra "Bilbo"
+    // Consultas de búsqueda por texto
+
+    // 1. Encontrar películas cuya sinopsis contenga la palabra "Bilbo"
     const bilboMovies = await collection.find({ $text: { $search: "Bilbo" } }).toArray();
-    console.log("Películas cuya sinopsis contiene la palabra 'Bilbo':");
-    console.log(bilboMovies);
+    if (bilboMovies.length === 0) {
+      console.log("No hay ninguna película cuya sinopsis contenga la palabra 'Bilbo'.");
+    } else {
+      console.log("Películas cuya sinopsis contiene 'Bilbo':");
+      console.log(bilboMovies);
+    }
 
-    // Buscar películas cuya sinopsis contenga las palabras "Bilbo" y "Gandalf"
-    const bilboGandalfMovies = await collection.find({ $text: { $search: "Bilbo Gandalf" } }).toArray();
-    console.log("Películas cuya sinopsis contiene las palabras 'Bilbo' y 'Gandalf':");
-    console.log(bilboGandalfMovies);
+    // 2. Encontrar películas cuya sinopsis contenga las palabras "Bilbo" y "Gandalf"
+    const bilboAndGandalfMovies = await collection.find({ $text: { $search: "Bilbo Gandalf" } }).toArray();
+    if (bilboAndGandalfMovies.length === 0) {
+      console.log("No hay ninguna película cuya sinopsis contenga las palabras 'Bilbo' y 'Gandalf'.");
+    } else {
+      console.log("Películas cuya sinopsis contiene 'Bilbo' y 'Gandalf':");
+      console.log(bilboAndGandalfMovies);
+    }
 
-    // Buscar películas cuya sinopsis contenga las palabras "dwarves" o "hobbit"
-    const dwarvesOrHobbitMovies = await collection.find({ $text: { $search: "Dwarves Hobbit" } }).toArray();
-    console.log("Películas cuya sinopsis contiene las palabras 'dwarves' o 'hobbit':");
-    console.log(dwarvesOrHobbitMovies);
+    // 3. Encontrar películas cuya sinopsis contenga las palabras "dwarves" o "hobbit"
+    const dwarvesOrHobbitMovies = await collection.find({ $text: { $search: "dwarves hobbit" } }).toArray();
+    if (dwarvesOrHobbitMovies.length === 0) {
+      console.log("No hay ninguna película cuya sinopsis contenga las palabras 'dwarves' o 'hobbit'.");
+    } else {
+      console.log("Películas cuya sinopsis contiene 'dwarves' o 'hobbit':");
+      console.log(dwarvesOrHobbitMovies);
+    }
 
-    // Buscar películas cuya sinopsis contenga las palabras "gold" y "dragon"
+    // 4. Encontrar películas cuya sinopsis contenga las palabras "gold" y "dragon"
     const goldAndDragonMovies = await collection.find({ $text: { $search: "\"gold\" \"dragon\"" } }).toArray();
-    console.log("Películas cuya sinopsis contiene las palabras 'gold' y 'dragon':");
-    console.log(goldAndDragonMovies);
+    if (goldAndDragonMovies.length === 0) {
+      console.log("No hay ninguna película cuya sinopsis contenga las palabras 'gold' y 'dragon'.");
+    } else {
+      console.log("Películas cuya sinopsis contiene 'gold' y 'dragon':");
+      console.log(goldAndDragonMovies);
+    }
 
   } catch (error) {
     console.error("Error en la ejecución:", error);
