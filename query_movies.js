@@ -29,12 +29,12 @@ const uri = "mongodb://localhost:27017";
     console.log(tarantinoMovies);
 
     // Obtener documentos con actores que incluyan a "Brad Pitt"
-    const bradPittMovies = await collection.find({ actors: "Brad Pitt" }).toArray();
+    const bradPittMovies = await collection.find({ actores: "Brad Pitt" }).toArray();
     console.log("Películas con Brad Pitt como actor:");
     console.log(bradPittMovies);
 
     // Obtener documentos con franquicia igual a "The Hobbit"
-    const hobbitMovies = await collection.find({ franchise: "The Hobbit" }).toArray();
+    const hobbitMovies = await collection.find({ franquicia: "The Hobbit" }).toArray();
     console.log("Películas de la franquicia The Hobbit:");
     console.log(hobbitMovies);
 
