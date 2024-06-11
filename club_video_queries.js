@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 
-const uri = "mongodb://localhost:27017";
+const uri = "mongodb://0.0.0.0:27017";
 
 
 async function insertDocuments() {

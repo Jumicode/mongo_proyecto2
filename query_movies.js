@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 // URI de conexión a MongoDB (ajusta si tu servidor está en una dirección diferente)
-const uri = "mongodb://localhost:27017";
+const uri = "mongodb://0.0.0.0:27017";
 
 // Función principal
   async function queryMovies() {

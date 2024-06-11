@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 // URI de conexión a MongoDB (ajusta si tu servidor está en una dirección diferente)
-const uri = "mongodb://localhost:27017";
+const uri = "mongodb://0.0.0.0:27017";
 
 // Función principal
 async function textSearchQueries() {
@@ -33,7 +33,7 @@ async function textSearchQueries() {
     console.log(bilboGandalfMovies);
 
     // Buscar películas cuya sinopsis contenga las palabras "dwarves" o "hobbit"
-    const dwarvesOrHobbitMovies = await collection.find({ $text: { $search: "dwarves hobbit" } }).toArray();
+    const dwarvesOrHobbitMovies = await collection.find({ $text: { $search: "Dwarves Hobbit" } }).toArray();
     console.log("Películas cuya sinopsis contiene las palabras 'dwarves' o 'hobbit':");
     console.log(dwarvesOrHobbitMovies);
 
